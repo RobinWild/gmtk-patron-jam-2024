@@ -44,7 +44,6 @@ public class TurnManager : MonoBehaviour
             if (actingObjects.Count == 0)
             {
                 OnAllActionsCompleted?.Invoke();
-                Debug.Log("All objects finished!");
             }
         }
     }
