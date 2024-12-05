@@ -1,0 +1,117 @@
+{
+"skeleton": {
+	"hash": "1ra4e2BN57w",
+	"spine": "4.2.37",
+	"x": -54.5,
+	"y": -66.75,
+	"width": 109,
+	"height": 133.5,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{
+		"name": "cardMain",
+		"parent": "root",
+		"length": 208.39,
+		"rotation": 90,
+		"scaleX": 0.5,
+		"scaleY": 0.5,
+		"color": "abe323ff"
+	},
+	{ "name": "cardTop", "parent": "cardMain", "rotation": -90, "x": 92, "color": "abe323ff" },
+	{ "name": "cardBot", "parent": "cardMain", "rotation": -90, "x": -92, "color": "abe323ff" }
+],
+"slots": [
+	{ "name": "card", "bone": "root", "attachment": "assets/card" }
+],
+"physics": [
+	{
+		"name": "cardBot",
+		"order": 2,
+		"bone": "cardBot",
+		"x": 1,
+		"y": 1,
+		"inertia": 0.319,
+		"strength": 150.9,
+		"damping": 0.7038,
+		"mass": 0.47
+	},
+	{
+		"name": "cardMain",
+		"order": 1,
+		"bone": "cardMain",
+		"rotate": 1,
+		"inertia": 0.3468,
+		"strength": 152.9,
+		"damping": 0.8025
+	},
+	{
+		"name": "cardTop",
+		"bone": "cardTop",
+		"x": 1,
+		"y": 1,
+		"inertia": 0.319,
+		"strength": 150.9,
+		"damping": 0.7038,
+		"mass": 0.24
+	}
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"card": {
+				"assets/card": {
+					"type": "mesh",
+					"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+					"triangles": [ 1, 3, 0, 1, 2, 3 ],
+					"vertices": [ 2, 3, 109, -41.5, 0.97612, 2, 109, -225.5, 0.02388, 2, 3, -109, -41.5, 0.97049, 2, -109, -225.5, 0.02951, 2, 3, -109, 225.5, 0.02321, 2, -109, 41.5, 0.97679, 2, 3, 109, 225.5, 0.02993, 2, 109, 41.5, 0.97007 ],
+					"hull": 4,
+					"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+					"width": 218,
+					"height": 267
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{
+						"value": -2.27,
+						"curve": [ 0.333, -2.27, 0.667, 0.98 ]
+					},
+					{
+						"time": 1,
+						"value": 0.98,
+						"curve": [ 1.333, 0.98, 1.667, -2.27 ]
+					},
+					{ "time": 2, "value": -2.27 }
+				]
+			}
+		}
+	},
+	"animation2": {
+		"bones": {
+			"root": {
+				"translate": [
+					{},
+					{ "time": 0.2667, "x": 586.79, "y": 495.1, "curve": "stepped" },
+					{ "time": 0.6333, "x": 586.79, "y": 495.1 },
+					{ "time": 0.8, "x": -675.15, "y": -216.29, "curve": "stepped" },
+					{ "time": 1.2667, "x": -675.15, "y": -216.29 },
+					{ "time": 1.4333, "x": -1103.02, "y": 388.83, "curve": "stepped" },
+					{ "time": 1.8667, "x": -1103.02, "y": 388.83 },
+					{ "time": 2, "curve": "stepped" },
+					{ "time": 2.7333 }
+				]
+			}
+		}
+	}
+}
+}
