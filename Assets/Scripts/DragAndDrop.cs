@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
+public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public static DragAndDrop Active;
     
@@ -23,12 +24,13 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IDrop
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
+
         _startPosition = _rect.localPosition;
     }
     
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log(_drop);
         Active = this;
 
         // Convert screen position to local position
@@ -39,16 +41,17 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IDrop
             out Vector2 localPoint        // Resulting local position
         );
 
-        _rect.localPosition = localPoint;
+        // Tween to the desired position
+        Vector3 targetPosition = _rect.parent.TransformPoint(localPoint); // Convert localPoint to world position
+        _rect.DOMove(targetPosition, 0.2f).SetEase(Ease.OutQuad); // Smoothly move to target position
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("Drop Zone status: " + _drop);
-        
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
+
         if (_drop != null)
         {
-            Debug.Log("Dropzone");
             _rect.DOLocalMove(_drop.DropPosition, 0.25f).SetEase(Ease.OutBack);
         }
         else
@@ -58,4 +61,5 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IDrop
 
         Active = null;
     }
+
 }
