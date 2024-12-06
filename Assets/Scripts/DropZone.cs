@@ -13,6 +13,9 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Color highlightedColour = Color.white;
     public Color selectedColour = Color.yellow;
 
+    public bool scaleDraggables = true;
+    public float draggableScale = 1f;
+
     private Image image;
 
     // UnityEvent for OnDrop functionality
@@ -26,18 +29,20 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (DragAndDrop.Active != null)
+        if (Draggable.Active != null)
         {
-            DragAndDrop.Active.SetDropZone(this);
+            if (scaleDraggables) Draggable.Active.transform.DOScale (Vector3.one * draggableScale, 0.2f);
+            
+            Draggable.Active.SetDropZone(this);
             GetComponent<Image>().DOColor(selectedColour, 0.5f);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (DragAndDrop.Active != null)
+        if (Draggable.Active != null)
         {
-            DragAndDrop.Active.SetDropZone(null);
+            Draggable.Active.SetDropZone(null);
             GetComponent<Image>().DOColor(unselectedColour, 0.5f);
         }
     }
@@ -57,7 +62,6 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         sequence.Append(image.DOColor(unselectedColour, 1f));
         sequence.Play();
     }
-
 
     private void OnDrawGizmosSelected()
     {

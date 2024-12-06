@@ -15,6 +15,9 @@ public class CardHandLayout : MonoBehaviour
     [SerializeField] private Transform discardZone;
     [SerializeField] public DropZone handZone;
 
+    [Header("Buttons")]
+    [SerializeField] private Button[] buttons;
+
     private RectTransform parentRectTransform;
     public List<GameObject> handCards = new List<GameObject>();
     public List<GameObject> playedCards = new List<GameObject>();
@@ -26,9 +29,16 @@ public class CardHandLayout : MonoBehaviour
 
     public void DealOrDiscardHand()
     {
+        if (buttons != null)
+        {
+            foreach(Button button in buttons)
+            {
+                button.interactable = false;
+            }
+        }
+
         if (handCards.Count > 0 || playedCards.Count > 0)
         {
-            Debug.Log("Discarding cards");
             DiscardHandAndDealNew();
         }
         else
@@ -39,11 +49,20 @@ public class CardHandLayout : MonoBehaviour
 
     private void DealHand()
     {
-        CreateCards();
+        if (buttons != null)
+        {
+            foreach(Button button in buttons)
+            {
+                button.interactable = true;
+            }
+        }
+
+        InstantiateCards();
+        SortHandByHierarchy();
         ArrangeCardsSmoothly();
     }
 
-    private void CreateCards()
+    private void InstantiateCards()
     {
         for (int i = 0; i < defaultHandSize; i++)
         {
@@ -64,6 +83,7 @@ public class CardHandLayout : MonoBehaviour
                 RectTransform cardTransform = card.GetComponent<RectTransform>();
                 Vector3 discardPosition = parentRectTransform.InverseTransformPoint(discardZone.position);
                 discardSequence.Join(cardTransform.DOAnchorPos(discardPosition, 0.5f).SetEase(Ease.InQuad));
+                discardSequence.Join(cardTransform.DORotate(new Vector3(0, 0, 0), 0.3f).SetEase(Ease.InQuad));
             }
         }
 
@@ -92,7 +112,7 @@ public class CardHandLayout : MonoBehaviour
             handCards.Clear();
             playedCards.Clear();
 
-            DealHand();
+            DealHand();  // Call DealHand after discard is complete
         });
 
         discardSequence.Play();
@@ -103,31 +123,59 @@ public class CardHandLayout : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, parentRectTransform);
         handCards.Add(newCard);
         newCard.transform.position = deckZone.position;
+        SortHandByHierarchy();
         ArrangeCardsSmoothly();
     }
 
     public void AddCardToHand(GameObject card, GameObject dropZone)
     {
-        Debug.Log("Adding card to hand");
+        // Prevent duplicates
         if (handCards.Contains(card))
         {
-            card.GetComponent<DragAndDrop>().ResetPosition();
+            card.GetComponent<Draggable>().ResetPosition();
+            ArrangeCardsSmoothly();
             return;
         }
 
-        handCards.Add(card);
-        if (playedCards.Contains(card)){
+        // Remove from played cards if applicable
+        if (playedCards.Contains(card))
+        {
             playedCards.Remove(card);
         }
+
+        // Add to the hand and sort by hierarchy
+        handCards.Add(card);
+        SortHandByHierarchy();
+
+        // Normalize canvas sorting for all hand cards
+        NormalizeCanvasSorting();
         ArrangeCardsSmoothly();
     }
 
-    private void ArrangeCardsSmoothly()
+    private void SortHandByHierarchy()
+    {
+        // Sort handCards by their hierarchy order
+        handCards.Sort((a, b) => a.transform.GetSiblingIndex().CompareTo(b.transform.GetSiblingIndex()));
+    }
+
+    private void NormalizeCanvasSorting()
+    {
+        // Ensure cards in the hand have their Canvas sorting adjusted based on their position
+        for (int i = 0; i < handCards.Count; i++)
+        {
+            Canvas canvas = handCards[i].GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.sortingOrder = i; // Assign sort order by position
+            }
+        }
+    }
+
+    public void ArrangeCardsSmoothly()
     {
         float containerWidth = parentRectTransform.rect.width;
         float totalWidth = (handCards.Count - 1) * cardSpacing;
 
-        // Adjust card spacing if total width exceeds container width
         float adjustedSpacing = totalWidth > containerWidth
             ? cardSpacing * (containerWidth / totalWidth)
             : cardSpacing;
@@ -168,17 +216,18 @@ public class CardHandLayout : MonoBehaviour
         playedCards.Add(playedCard);
         handCards.Remove(playedCard);
 
+        SortHandByHierarchy();
         ArrangeCardsSmoothly();
     }
 
     public void MoveCardToDropZone(GameObject card, GameObject dropZone)
     {
-        Debug.Log("Moving card to dropzone");
-        card.transform.DOMove(card.GetComponent<DragAndDrop>()._drop.DropPosition, 0.2f);
+        card.transform.DOMove(card.GetComponent<Draggable>()._drop.DropPosition, 0.2f);
         
         if (handCards.Contains(card)) handCards.Remove(card);
         if (!playedCards.Contains(card)) playedCards.Add(card);
 
+        SortHandByHierarchy();
         ArrangeCardsSmoothly();
     }
 }

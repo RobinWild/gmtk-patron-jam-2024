@@ -2,15 +2,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public static DragAndDrop Active;
+    public static Draggable Active;
+    private static List<Draggable> allDraggables = new List<Draggable>(); // Tracks all draggable objects
 
     public DropZone _drop;
     private Vector3 _startPosition;
     private RectTransform _rect;
 
+    public GraphicRaycaster nonDropzoneRaycaster;
     private Canvas _canvas;
     private int _originalSortingOrder;
 
@@ -31,6 +34,15 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
 
         _originalSortingOrder = _canvas.sortingOrder;
+
+        // Add this object to the global list of draggables
+        allDraggables.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        // Remove this object from the global list when destroyed
+        allDraggables.Remove(this);
     }
 
     public void SetDropZone(DropZone drop)
@@ -40,17 +52,26 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        Active = this;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         _startPosition = _rect.position;
         _canvas.overrideSorting = true;
         _originalSortingOrder = _canvas.sortingOrder;
         _canvas.sortingOrder = 100;
+        _rect.transform.DORotate(Vector3.zero, 0.2f);
+
+        // Disable raycast blocking for all other draggables
+        foreach (var draggable in allDraggables)
+        {
+            if (draggable != this)
+            {
+                draggable.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Active = this;
-
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             _rect.parent as RectTransform,
             eventData.position,
@@ -74,14 +95,29 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         _canvas.overrideSorting = false;
         _canvas.sortingOrder = _originalSortingOrder;
         Active = null;
+        _rect.DOScale(Vector3.one * 1f, 0.25f).SetEase(Ease.OutBack);
+
+        // Re-enable raycast blocking for all other draggables
+        foreach (var draggable in allDraggables)
+        {
+            if (draggable != this)
+            {
+                draggable.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+        }
     }
 
-    public void OnPointerEnter(PointerEventData eventData){
+    public void OnPointerEnter(PointerEventData eventData)
+    {
         _rect.DOScale(Vector3.one * 1.1f, 0.25f).SetEase(Ease.OutBack);
     }
 
-    public void OnPointerExit(PointerEventData eventData){
-        _rect.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (Active != this)
+        {
+            _rect.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
+        }
     }
 
     public void ResetPosition()
