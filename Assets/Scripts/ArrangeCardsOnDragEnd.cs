@@ -12,6 +12,6 @@ public class ArrangeCardsOnDragEnd : MonoBehaviour, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        cardHandLayout.ArrangeCardsSmoothly();
+        cardHandLayout.ArrangeHand();
     }
 }
