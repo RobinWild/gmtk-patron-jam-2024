@@ -29,13 +29,7 @@ public class CardHandLayout : MonoBehaviour
 
     public void DealOrDiscardHand()
     {
-        if (buttons != null)
-        {
-            foreach(Button button in buttons)
-            {
-                button.interactable = false;
-            }
-        }
+        SetButtonState(false);
 
         if (handCards.Count > 0 || playedCards.Count > 0)
         {
@@ -47,76 +41,106 @@ public class CardHandLayout : MonoBehaviour
         }
     }
 
-    private void DealHand()
+    public void SetButtonState(bool enable)
     {
         if (buttons != null)
         {
             foreach(Button button in buttons)
             {
-                button.interactable = true;
+                button.interactable = enable;
             }
         }
+    }
+
+    private void DealHand()
+    {
+        // Disable buttons immediately before starting the card instantiation sequence
+        SetButtonState(false);
 
         InstantiateCards();
-        SortHandByHierarchy();
-        ArrangeCardsSmoothly();
     }
 
     private void InstantiateCards()
     {
+        Sequence sequence = DOTween.Sequence();
+
         for (int i = 0; i < defaultHandSize; i++)
         {
-            GameObject card = Instantiate(cardPrefab, parentRectTransform);
-            handCards.Add(card);
-            card.transform.position = deckZone.position;
+            sequence.AppendCallback(() =>
+            {
+                DrawCardToHand();
+            });
+
+            if (i < defaultHandSize - 1)
+            {
+                sequence.AppendInterval(0.1f);
+            }
         }
+
+        sequence.OnComplete(() =>
+        {
+            SetButtonState(true);
+            SortHandByHierarchy();
+            ArrangeCardsSmoothly();
+        });
+
+        sequence.Play();
     }
 
     public void DiscardHandAndDealNew()
     {
         Sequence discardSequence = DOTween.Sequence();
+        float delayBetweenCards = 0.05f; // Delay between the start of each card's discard animation
+        Vector3 discardPosition = parentRectTransform.InverseTransformPoint(discardZone.position);
 
-        foreach (var card in handCards)
-        {
-            if (card != null)
-            {
-                RectTransform cardTransform = card.GetComponent<RectTransform>();
-                Vector3 discardPosition = parentRectTransform.InverseTransformPoint(discardZone.position);
-                discardSequence.Join(cardTransform.DOAnchorPos(discardPosition, 0.5f).SetEase(Ease.InQuad));
-                discardSequence.Join(cardTransform.DORotate(new Vector3(0, 0, 0), 0.3f).SetEase(Ease.InQuad));
-            }
-        }
+        // Discard hand cards
+        AnimateCardDiscard(handCards, discardSequence, 0f, delayBetweenCards, discardPosition);
 
-        foreach (var playedCard in playedCards)
-        {
-            if (playedCard != null)
-            {
-                RectTransform playedCardTransform = playedCard.GetComponent<RectTransform>();
-                Vector3 discardPosition = parentRectTransform.InverseTransformPoint(discardZone.position);
-                discardSequence.Join(playedCardTransform.DOAnchorPos(discardPosition, 0.5f).SetEase(Ease.InQuad));
-            }
-        }
+        // Discard played cards after hand cards
+        float startDelayForPlayedCards = handCards.Count * delayBetweenCards;
+        AnimateCardDiscard(playedCards, discardSequence, startDelayForPlayedCards, delayBetweenCards, discardPosition);
 
+        // Clean up and deal new cards after discarding is complete
         discardSequence.OnComplete(() =>
         {
-            foreach (var card in handCards)
-            {
-                if (card != null) Destroy(card);
-            }
-
-            foreach (var playedCard in playedCards)
-            {
-                if (playedCard != null) Destroy(playedCard);
-            }
-
-            handCards.Clear();
-            playedCards.Clear();
-
-            DealHand();  // Call DealHand after discard is complete
+            ClearCards(handCards);
+            ClearCards(playedCards);
+            DealHand();
         });
 
         discardSequence.Play();
     }
+
+    private void AnimateCardDiscard(
+        List<GameObject> cards, Sequence sequence, float initialDelay, float delayBetweenCards, Vector3 discardPosition)
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            var card = cards[i];
+            if (card != null)
+            {
+                RectTransform cardTransform = card.GetComponent<RectTransform>();
+
+                // Add animations to the sequence with staggered start times
+                float startTime = initialDelay + i * delayBetweenCards;
+                sequence.Insert(startTime, cardTransform.DOAnchorPos(discardPosition, 0.5f).SetEase(Ease.InQuad));
+                sequence.Insert(startTime, cardTransform.DORotate(Vector3.zero, 0.3f).SetEase(Ease.InQuad));
+            }
+        }
+    }
+
+    private void ClearCards(List<GameObject> cards)
+    {
+        foreach (var card in cards)
+        {
+            if (card != null)
+            {
+                Destroy(card);
+            }
+        }
+        cards.Clear();
+    }
+
 
     public void DrawCardToHand()
     {
