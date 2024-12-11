@@ -181,7 +181,7 @@ public class CardHandLayout : MonoBehaviour
 
     public void MoveCardToDropZone(GameObject card, GameObject dropZone)
     {
-        card.transform.DOMove(card.GetComponent<Draggable>()._drop.DropPosition, 0.2f);
+        card.transform.DOMove(card.GetComponent<Draggable>()._drop.dropPosition, 0.2f);
         if (handCards.Contains(card)) handCards.Remove(card);
         if (!playedCards.Contains(card)) playedCards.Add(card);
         SortAndArrangeHand();

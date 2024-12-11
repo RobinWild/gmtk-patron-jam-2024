@@ -1,0 +1,1742 @@
+fileFormatVersion: 2
+guid: ed28d6d47ebc09142932dc5a25a6c0f2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6103922440897227676
+    second: new-land-card-button_0
+  - first:
+      213: -2800721382810499262
+    second: new-land-card-button_1
+  - first:
+      213: -7362013251059507721
+    second: new-land-card-button_2
+  - first:
+      213: -8705136868948428989
+    second: new-land-card-button_3
+  - first:
+      213: -9005400621963798296
+    second: new-land-card-button_4
+  - first:
+      213: 8041456648494118215
+    second: new-land-card-button_5
+  - first:
+      213: -70469539134604170
+    second: new-land-card-button_6
+  - first:
+      213: -2188574041933917990
+    second: new-land-card-button_7
+  - first:
+      213: -374696649933899969
+    second: new-land-card-button_8
+  - first:
+      213: 26466127568911030
+    second: new-land-card-button_9
+  - first:
+      213: 673998378451428125
+    second: new-land-card-button_10
+  - first:
+      213: 3679718885692909623
+    second: new-land-card-button_11
+  - first:
+      213: 3636054848121378509
+    second: new-land-card-button_12
+  - first:
+      213: 5864699634846382241
+    second: new-land-card-button_13
+  - first:
+      213: -7321923601007382749
+    second: new-land-card-button_14
+  - first:
+      213: 8892179052721101230
+    second: new-land-card-button_15
+  - first:
+      213: 2161843722830004262
+    second: new-land-card-button_16
+  - first:
+      213: 4060365839994196868
+    second: new-land-card-button_17
+  - first:
+      213: -7414901713777817196
+    second: new-land-card-button_18
+  - first:
+      213: -2041224297120326272
+    second: new-land-card-button_19
+  - first:
+      213: 313056298894971494
+    second: new-land-card-button_20
+  - first:
+      213: 3462455632157047380
+    second: new-land-card-button_21
+  - first:
+      213: 1279015653619558499
+    second: new-land-card-button_22
+  - first:
+      213: -3814348234009400555
+    second: new-land-card-button_23
+  - first:
+      213: -7607772135206667868
+    second: new-land-card-button_24
+  - first:
+      213: -7213614920850948882
+    second: new-land-card-button_25
+  - first:
+      213: 6254123504367819182
+    second: new-land-card-button_26
+  - first:
+      213: -7625426804107834634
+    second: new-land-card-button_27
+  - first:
+      213: 3908489149493981611
+    second: new-land-card-button_28
+  - first:
+      213: -2158054463566948991
+    second: new-land-card-button_29
+  - first:
+      213: 7063586607786390544
+    second: new-land-card-button_30
+  - first:
+      213: 40755797704573835
+    second: new-land-card-button_31
+  - first:
+      213: 5752461060754464601
+    second: new-land-card-button_32
+  - first:
+      213: 8315960291391753295
+    second: new-land-card-button_33
+  - first:
+      213: 7085859614330202644
+    second: new-land-card-button_34
+  - first:
+      213: 3988282652739122616
+    second: new-land-card-button_35
+  - first:
+      213: -4390419262167292321
+    second: new-land-card-button_36
+  - first:
+      213: 1678643899692982876
+    second: new-land-card-button_37
+  - first:
+      213: 8321507224514346284
+    second: new-land-card-button_38
+  - first:
+      213: -5373060352879536920
+    second: new-land-card-button_39
+  - first:
+      213: 4273695727831542990
+    second: new-land-card-button_40
+  - first:
+      213: 1089448523849108884
+    second: new-land-card-button_41
+  - first:
+      213: 7313729249032895777
+    second: new-land-card-button_42
+  - first:
+      213: 2322606528807603120
+    second: new-land-card-button_43
+  - first:
+      213: -5813546752882719127
+    second: new-land-card-button_44
+  - first:
+      213: -5150881874257519853
+    second: new-land-card-button_45
+  - first:
+      213: -213080423749637780
+    second: new-land-card-button_46
+  - first:
+      213: -2006023393185109229
+    second: new-land-card-button_47
+  - first:
+      213: 7472857135689608999
+    second: new-land-card-button_48
+  - first:
+      213: -6236618953106895347
+    second: new-land-card-button_49
+  - first:
+      213: -5752126574977291749
+    second: new-land-card-button_50
+  - first:
+      213: 4108646082272386980
+    second: new-land-card-button_51
+  - first:
+      213: 260988756121841221
+    second: new-land-card-button_52
+  - first:
+      213: 250648559884611913
+    second: new-land-card-button_53
+  - first:
+      213: -766511123227908194
+    second: new-land-card-button_54
+  - first:
+      213: -2923398416234025975
+    second: new-land-card-button_55
+  - first:
+      213: -5721135769111522764
+    second: new-land-card-button_56
+  - first:
+      213: -3704266935653489207
+    second: new-land-card-button_57
+  - first:
+      213: 7311843669616438292
+    second: new-land-card-button_58
+  - first:
+      213: 2071361200720022513
+    second: new-land-card-button_59
+  - first:
+      213: -8853150536235397789
+    second: new-land-card-button_60
+  - first:
+      213: 6790770992057518633
+    second: new-land-card-button_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: new-land-card-button_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 834
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46419c541e28a4ba0800000000000000
+      internalID: -6103922440897227676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 862
+        width: 44
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2474dbebdb6d129d0800000000000000
+      internalID: -2800721382810499262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 863
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd11ea24ffd4d990800000000000000
+      internalID: -7362013251059507721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_3
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 863
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3473c25b324213780800000000000000
+      internalID: -8705136868948428989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_4
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 863
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e814c3d8d3660380800000000000000
+      internalID: -9005400621963798296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_5
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 863
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 745f132673ef89f60800000000000000
+      internalID: 8041456648494118215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_6
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 862
+        width: 35
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c7568d354a50ff0800000000000000
+      internalID: -70469539134604170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 835
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad053e1218f90a1e0800000000000000
+      internalID: -2188574041933917990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 788
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f373922d16fcccaf0800000000000000
+      internalID: -374696649933899969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_9
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 789
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba33548dc60e5000800000000000000
+      internalID: 26466127568911030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 740
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1369c644f58a5900800000000000000
+      internalID: 673998378451428125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_11
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 741
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738a50f94dcf01330800000000000000
+      internalID: 3679718885692909623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 692
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc69c16ae9cd57230800000000000000
+      internalID: 3636054848121378509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_13
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 693
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a8b161de39936150800000000000000
+      internalID: 5864699634846382241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 644
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32fe761374d436a90800000000000000
+      internalID: -7321923601007382749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_15
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 645
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea95c945cbd576b70800000000000000
+      internalID: 8892179052721101230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 596
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620c0377969600e10800000000000000
+      internalID: 2161843722830004262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_17
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 597
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4831cfef731595830800000000000000
+      internalID: 4060365839994196868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 548
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49986d95d2af81990800000000000000
+      internalID: -7414901713777817196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_19
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 549
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d1f3f015d1ca3e0800000000000000
+      internalID: -2041224297120326272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66255529b03385400800000000000000
+      internalID: 313056298894971494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_21
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 508
+        width: 31
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45a75457d0d1d0030800000000000000
+      internalID: 3462455632157047380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_22
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 494
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3686820e5f9ffb110800000000000000
+      internalID: 1279015653619558499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_23
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 501
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b2b3e8d76b01bc0800000000000000
+      internalID: -3814348234009400555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 452
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a934ecfc83cb6690800000000000000
+      internalID: -7607772135206667868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 478
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eecb838e27714eb90800000000000000
+      internalID: -7213614920850948882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_26
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 464
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9d343013c1bc650800000000000000
+      internalID: 6254123504367819182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_27
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 453
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa096019ba0d2690800000000000000
+      internalID: -7625426804107834634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_28
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 444
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1be046c2ebd3630800000000000000
+      internalID: 3908489149493981611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_29
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 415
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185552536ec0d02e0800000000000000
+      internalID: -2158054463566948991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_30
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 432
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01470556896e60260800000000000000
+      internalID: 7063586607786390544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 404
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8308bc9e2bc09000800000000000000
+      internalID: 40755797704573835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_32
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 407
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f598e5bd8d4df40800000000000000
+      internalID: 5752461060754464601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_33
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 397
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4cc8ae33d9386370800000000000000
+      internalID: 8315960291391753295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_34
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 405
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41a2078d6c7065260800000000000000
+      internalID: 7085859614330202644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 356
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b53e5c11f9395730800000000000000
+      internalID: 3988282652739122616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_36
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 377
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f566c7741f81213c0800000000000000
+      internalID: -4390419262167292321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_37
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 367
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52a391abbdbb4710800000000000000
+      internalID: 1678643899692982876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_38
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 357
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d36014bbeeb7370800000000000000
+      internalID: 8321507224514346284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_39
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 347
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e451e5a31e0f65b0800000000000000
+      internalID: -5373060352879536920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_40
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 343
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecce0871f973f4b30800000000000000
+      internalID: 4273695727831542990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d891909af7e1f00800000000000000
+      internalID: 1089448523849108884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_42
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 309
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d7dff80069f7560800000000000000
+      internalID: 7313729249032895777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bb849e055e8b3020800000000000000
+      internalID: 2322606528807603120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_44
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 261
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966cc4d9702225fa0800000000000000
+      internalID: -5813546752882719127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 212
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31bd1e4d9346488b0800000000000000
+      internalID: -5150881874257519853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_46
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 213
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6920d9cb7cfa0df0800000000000000
+      internalID: -213080423749637780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31be31e2a5c2924e0800000000000000
+      internalID: -2006023393185109229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_48
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 165
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72fa506d8fbe4b760800000000000000
+      internalID: 7472857135689608999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 116
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0e489cea141379a0800000000000000
+      internalID: -6236618953106895347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_50
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 117
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ae46b2b575c20b0800000000000000
+      internalID: -5752126574977291749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af55a1e7d7d40930800000000000000
+      internalID: 4108646082272386980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_52
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 69
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e630314e73f9300800000000000000
+      internalID: 260988756121841221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941b267898b7a7300800000000000000
+      internalID: 250648559884611913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_54
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 20
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e976d9fc13ecc55f0800000000000000
+      internalID: -766511123227908194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_55
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 0
+        width: 35
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c6e6711a00e67d0800000000000000
+      internalID: -2923398416234025975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_56
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 432935274517a90b0800000000000000
+      internalID: -5721135769111522764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_57
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 0
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c5262b19dcc79cc0800000000000000
+      internalID: -3704266935653489207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_58
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c2da4e313e87560800000000000000
+      internalID: 7311843669616438292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_59
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 0
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fb817a9904febc10800000000000000
+      internalID: 2071361200720022513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_60
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d41a84e7a432580800000000000000
+      internalID: -8853150536235397789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new-land-card-button_61
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 0
+        width: 35
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92a8d9cfc3aad3e50800000000000000
+      internalID: 6790770992057518633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      new-land-card-button_0: -6103922440897227676
+      new-land-card-button_1: -2800721382810499262
+      new-land-card-button_10: 673998378451428125
+      new-land-card-button_11: 3679718885692909623
+      new-land-card-button_12: 3636054848121378509
+      new-land-card-button_13: 5864699634846382241
+      new-land-card-button_14: -7321923601007382749
+      new-land-card-button_15: 8892179052721101230
+      new-land-card-button_16: 2161843722830004262
+      new-land-card-button_17: 4060365839994196868
+      new-land-card-button_18: -7414901713777817196
+      new-land-card-button_19: -2041224297120326272
+      new-land-card-button_2: -7362013251059507721
+      new-land-card-button_20: 313056298894971494
+      new-land-card-button_21: 3462455632157047380
+      new-land-card-button_22: 1279015653619558499
+      new-land-card-button_23: -3814348234009400555
+      new-land-card-button_24: -7607772135206667868
+      new-land-card-button_25: -7213614920850948882
+      new-land-card-button_26: 6254123504367819182
+      new-land-card-button_27: -7625426804107834634
+      new-land-card-button_28: 3908489149493981611
+      new-land-card-button_29: -2158054463566948991
+      new-land-card-button_3: -8705136868948428989
+      new-land-card-button_30: 7063586607786390544
+      new-land-card-button_31: 40755797704573835
+      new-land-card-button_32: 5752461060754464601
+      new-land-card-button_33: 8315960291391753295
+      new-land-card-button_34: 7085859614330202644
+      new-land-card-button_35: 3988282652739122616
+      new-land-card-button_36: -4390419262167292321
+      new-land-card-button_37: 1678643899692982876
+      new-land-card-button_38: 8321507224514346284
+      new-land-card-button_39: -5373060352879536920
+      new-land-card-button_4: -9005400621963798296
+      new-land-card-button_40: 4273695727831542990
+      new-land-card-button_41: 1089448523849108884
+      new-land-card-button_42: 7313729249032895777
+      new-land-card-button_43: 2322606528807603120
+      new-land-card-button_44: -5813546752882719127
+      new-land-card-button_45: -5150881874257519853
+      new-land-card-button_46: -213080423749637780
+      new-land-card-button_47: -2006023393185109229
+      new-land-card-button_48: 7472857135689608999
+      new-land-card-button_49: -6236618953106895347
+      new-land-card-button_5: 8041456648494118215
+      new-land-card-button_50: -5752126574977291749
+      new-land-card-button_51: 4108646082272386980
+      new-land-card-button_52: 260988756121841221
+      new-land-card-button_53: 250648559884611913
+      new-land-card-button_54: -766511123227908194
+      new-land-card-button_55: -2923398416234025975
+      new-land-card-button_56: -5721135769111522764
+      new-land-card-button_57: -3704266935653489207
+      new-land-card-button_58: 7311843669616438292
+      new-land-card-button_59: 2071361200720022513
+      new-land-card-button_6: -70469539134604170
+      new-land-card-button_60: -8853150536235397789
+      new-land-card-button_61: 6790770992057518633
+      new-land-card-button_7: -2188574041933917990
+      new-land-card-button_8: -374696649933899969
+      new-land-card-button_9: 26466127568911030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
