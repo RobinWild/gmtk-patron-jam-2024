@@ -4,7 +4,7 @@ using UnityEngine;
 public class ArrangeLand : MonoBehaviour
 {
     public float spacing = 200f;
-    public float moveDuration = 0.2f;
+    public float moveDuration = 0.3f;
 
     public RectTransform targetArea;  // The area where tokens will be arranged
 
@@ -32,7 +32,7 @@ public class ArrangeLand : MonoBehaviour
                 Vector3 newPosition = new Vector3(startPos.x + (i * spacing), startPos.y, startPos.z);
 
                 // Animate the child to its new position
-                child.DOAnchorPos(newPosition, moveDuration).SetEase(Ease.OutQuad);
+                child.DOAnchorPos(newPosition, moveDuration).SetEase(Ease.OutBack);
             }
         }
     }

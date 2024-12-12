@@ -7,10 +7,12 @@ public class Worker : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     public float workSpeed = 1f;
     public DropZone previousDropZone;
     public DropZone dropZone;
+    public DropZone home;
     private Draggable draggable;
 
     public void Start()
     {
+        home = FindFirstObjectByType<HomeZone>().GetComponent<DropZone>();
         draggable = GetComponent<Draggable>();
     }
 

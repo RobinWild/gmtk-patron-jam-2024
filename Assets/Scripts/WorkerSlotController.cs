@@ -14,4 +14,11 @@ public class WorkerSlotController : MonoBehaviour
 
         currentWorker = card.GetComponent<Worker>();
     }
+
+    public void EjectWorker()
+    {
+        // TODO: make worker go to predefined home
+        currentWorker.home.ManuallyDropObject(currentWorker.gameObject);
+        currentWorker = null;
+    }
 }

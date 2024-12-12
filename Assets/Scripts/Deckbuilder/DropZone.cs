@@ -71,10 +71,29 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (droppedObject.GetComponent<Worker>()) droppedObject.GetComponent<Worker>().dropZone = this;
 
-        // Check if the drop zone has the ArrangeTokens component
         if (arrangeTokens != null)
         {
             arrangeTokens.AddObject(droppedObject.GetComponent<RectTransform>());
+        }
+    }
+
+    public void ManuallyDropObject(GameObject objectToDrop)
+    {
+        if (objectToDrop != null)
+        {
+            if (singleSlot) CloseSlot();
+
+            OnCardDropped?.Invoke(objectToDrop, this.gameObject);
+
+            if (objectToDrop.GetComponent<Worker>())
+            {
+                objectToDrop.GetComponent<Worker>().dropZone = this;
+            }
+
+            if (arrangeTokens != null)
+            {
+                arrangeTokens.AddObject(objectToDrop.GetComponent<RectTransform>());
+            }
         }
     }
 }
