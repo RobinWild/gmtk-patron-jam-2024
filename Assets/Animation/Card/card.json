@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "e703pxHVlOA", "spine": "4.2.37", "x": -75.5, "y": -75.5, "width": 151, "height": 151 },
+"skeleton": { "hash": "ZlP6KGXB0+k", "spine": "4.2.37", "x": -75.5, "y": -75.5, "width": 151, "height": 151 },
 "bones": [
 	{ "name": "root" },
 	{ "name": "cardMain", "parent": "root", "length": 208.39, "rotation": 90, "scaleX": 0.5, "scaleY": 0.5 }
@@ -11,15 +11,13 @@
 	{
 		"name": "cardMain",
 		"bone": "cardMain",
-		"x": 0.4185,
-		"y": 0.4206,
-		"rotate": 0.8204,
-		"shearX": 0.1796,
-		"scaleX": 0.6288,
+		"rotate": 0.7665,
+		"shearX": 0.2335,
+		"scaleX": 0.4678,
 		"inertia": 0.3468,
 		"strength": 152.9,
-		"damping": 0.6886,
-		"mass": 0.41
+		"damping": 0.7544,
+		"mass": 0.55
 	}
 ],
 "skins": [

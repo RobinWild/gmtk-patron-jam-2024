@@ -41,7 +41,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         // Add this object to the global list of draggables
         allDraggables.Add(this);
 
-        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween");
+        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
     }
 
     private void OnDestroy()
@@ -64,9 +64,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         _canvas.overrideSorting = true;
         _originalSortingOrder = _canvas.sortingOrder;
         _canvas.sortingOrder = 100;
-        _rect.transform.DORotate(Vector3.zero, 0.2f);
-        DOTween.Kill("ScaleTween");
-        _rect.DOScale(Vector3.one * scaleOnPickup, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween");
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * scaleOnPickup, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
 
         // Disable raycast blocking for all other draggables
         foreach (var draggable in allDraggables)
@@ -123,11 +122,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             ResetPosition();
         }
 
-        _canvas.overrideSorting = false;
         _canvas.sortingOrder = _originalSortingOrder;
         Active = null;
-        DOTween.Kill("ScaleTween");
-        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween");
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
 
         // Re-enable raycast blocking for all other draggables
         foreach (var draggable in allDraggables)
@@ -141,16 +139,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        DOTween.Kill("ScaleTween");
-        _rect.DOScale(Vector3.one * scaleOnHover, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween");
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * scaleOnHover, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (Active != this)
         {
-            DOTween.Kill("ScaleTween");
-            _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween");
+            DOTween.Kill("ScaleTween" + GetInstanceID());
+            _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
         }
     }
 

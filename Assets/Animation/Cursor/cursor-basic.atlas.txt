@@ -1,0 +1,6 @@
+cursor-basic.png
+size:256,512
+filter:Linear,Linear
+pma:true
+assets/cursor
+bounds:2,2,235,285

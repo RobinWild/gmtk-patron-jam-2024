@@ -21,6 +21,7 @@ public class Worker : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             if (previousDropZone != null){
                 if (previousDropZone.child == GetComponent<Draggable>()) previousDropZone.child = null;
                 previousDropZone.OpenSlot();
+
                 if (previousDropZone.GetComponent<ArrangeTokens>())
                 {
                     previousDropZone.GetComponent<ArrangeTokens>().RemoveObject(this.GetComponent<RectTransform>());

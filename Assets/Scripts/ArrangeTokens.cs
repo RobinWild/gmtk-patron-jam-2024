@@ -19,26 +19,13 @@ public class ArrangeTokens : MonoBehaviour
     {
         if (objectsToArrange == null || objectsToArrange.Count == 0 || targetArea == null) return;
 
-        // Get the starting position (center of the target area)
-        float startX = targetArea.rect.width / 2f;
+        Vector3 startPos = targetArea.anchoredPosition;
 
-        // Ensure the first object is centered within the target area
-        if (objectsToArrange.Count > 0)
-        {
-            RectTransform firstObject = objectsToArrange[0];
-            startX -= firstObject.rect.width / 2f;  // Adjust starting position to center the first object
-        }
-
-        // Loop through each object to arrange them
         for (int i = 0; i < objectsToArrange.Count; i++)
         {
-            RectTransform obj = objectsToArrange[i];
+            Vector3 newPosition = new Vector3 (startPos.x + (i * spacing), (startPos.y) + (i % 2 * -spacing), startPos.z);
 
-            // Calculate the new X position for each object
-            float targetX = startX + (i * spacing);
-
-            // Animate the object to the new position simultaneously
-            obj.DOAnchorPosX(targetX, moveDuration).SetEase(Ease.OutQuad);
+            objectsToArrange[i].DOAnchorPos(newPosition, moveDuration).SetEase(Ease.OutQuad);
         }
     }
 
