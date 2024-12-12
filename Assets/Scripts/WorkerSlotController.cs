@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Spine;
 
 public class WorkerSlotController : MonoBehaviour
 {
