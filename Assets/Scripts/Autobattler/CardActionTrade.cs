@@ -14,8 +14,11 @@ public class CardActionTrade : MonoBehaviour
     public TradeResource tradeInput;
     public TradeResource tradeOutput;
     public string targetObjectName = "ResourceTarget";
+    public float resourceTweenDuration = 1f;
     public GameObject resourceSpawner;
     private GameObject targetObject;
+
+    private CardController cardController => GetComponent<CardController>();
 
     private Transform GetTargetPosition()
     {
@@ -28,21 +31,21 @@ public class CardActionTrade : MonoBehaviour
         return targetObject.transform;
     }
 
-    public void CheckTaskReady()
+    public void CheckTaskReadyToStart()
     {
         if (Inventory.GetResource(tradeInput.resourceType) >= tradeInput.quantity)
         {
-            GetComponent<CardController>().isTaskReady = true;
+            GetComponent<CardController>().SetTaskReady();
             Inventory.RemoveResource(tradeInput.resourceType, tradeInput.quantity);
 
             for (int i = 0; i < tradeInput.quantity; i++)
             {
-                InstantiateAndTweenResource(tradeInput.resourceType, GetTargetPosition(), transform, false, -0.5f, i);
+                InstantiateAndTweenResource(tradeInput.resourceType, GetTargetPosition(), transform.parent.transform, false, -0.5f, i);
             }
         }
         else
         {
-            GetComponent<CardController>().isTaskReady = false;
+            GetComponent<CardController>().isTaskReadyToProgress = false;
         }
     }
 
@@ -52,14 +55,19 @@ public class CardActionTrade : MonoBehaviour
             {
                 InstantiateAndTweenResource(tradeInput.resourceType, transform, GetTargetPosition(), true, 1f, i);
             }
-        Debug.Log($"Refunded {tradeInput.resourceType}.");
+    }
+
+    public void CheckIfReadyToPerformAction()
+    {
+        bool hasRoomForMoreResource = Inventory.GetResource(tradeOutput.resourceType) <=  Inventory.GetMaxResource(tradeOutput.resourceType) - 1;
+        if (hasRoomForMoreResource) cardController.GrantApproval();
     }
 
     public async void PerformAction()
     {
         var cardController = GetComponent<CardController>();
 
-        if (cardController.isTaskReady)
+        if (cardController.isTaskReadyToProgress)
         {
             for (int i = 0; i < tradeOutput.quantity; i++)
             {
@@ -81,10 +89,10 @@ public class CardActionTrade : MonoBehaviour
 
         resourceInstance.transform.position = startTransform.position;
         resourceInstance.transform.localScale = Vector3.one;
-        float iterationInterval = 0.2f;
-        float moveDuration = 0.5f + iterationInterval * iteration;
 
-        float arcHeight = 1.5f;
+        float moveDuration = resourceTweenDuration * (1 + Mathf.Exp(-iteration / 5f));
+
+        float arcHeight = 3f;
         float arcVariance = 0.5f;
 
         resourceInstance.transform.DOMoveX(endTransform.position.x, moveDuration).SetEase(Ease.Linear);
@@ -115,7 +123,7 @@ public class CardActionTrade : MonoBehaviour
     // Call this method when the card is removed or canceled before performing the action
     public void CancelAction()
     {
-        if (!GetComponent<CardController>().isTaskReady) return;
+        if (!GetComponent<CardController>().isTaskReadyToProgress) return;
 
         RefundResources();  // Refund the resources
         Debug.Log("Action canceled. Resources refunded.");

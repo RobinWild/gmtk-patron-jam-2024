@@ -7,35 +7,44 @@ public class CardController : MonoBehaviour
     public float taskProgress = 0f;
 
     [System.Serializable]
-    public class TaskCompletedEvent : UnityEvent<GameObject> { }
-    public TaskCompletedEvent OnTaskCompleted;
+    public class CardReadyToStartEvent : UnityEvent<GameObject> { }
+    public CardReadyToStartEvent OnCardReadyToStart;
 
     [System.Serializable]
-    public class TaskStartedEvent : UnityEvent<GameObject> { }
-    public TaskStartedEvent OnAttemptedTaskStart;
+    public class CardReadyToActEvent : UnityEvent<GameObject> { }
+    public CardReadyToActEvent OnCardReadyToAct;
 
     [System.Serializable]
-    public class TaskInterruptedEvent : UnityEvent<GameObject> { } // New event for interruption
-    public TaskInterruptedEvent OnTaskInterrupted;
+    public class CardActionEvent : UnityEvent<GameObject> { }
+    public CardActionEvent OnCardAction;
 
-    public bool isTaskReady = false;  // Flag to track if the task can start
+    [System.Serializable]
+    public class CardInterruptedEvent : UnityEvent<GameObject> { }
+    public CardInterruptedEvent OnCardInterrupted;
+
+    public bool isTaskReadyToProgress = false;
+    public bool shouldActionTrigger = false;
 
     void Update()
     {
+        if (GameTimeController.DeltaTime == 0) return;
         if (IsCardSlotActive())
         {
             HandleTaskProgress();
         }
         else
         {
-            if (taskProgress > 0f)  // Only trigger interruption if task progress has started
+            if (taskProgress > 0f)
             {
-                InterruptTask();
+                OnCardInterrupted?.Invoke(gameObject);
             }
             ResetCooldown();
         }
 
-        if (taskProgress >= taskDuration)
+        if (taskProgress >= taskDuration) OnCardReadyToAct?.Invoke(gameObject);
+
+
+        if (taskProgress >= taskDuration && shouldActionTrigger)
         {
             CompleteTask();
         }
@@ -49,36 +58,36 @@ public class CardController : MonoBehaviour
 
     private void HandleTaskProgress()
     {
-        if (isTaskReady)
+        if (isTaskReadyToProgress)
         {
             taskProgress += GameTimeController.DeltaTime;
         }
         else
         {
-            AttemptToStartTask();
+            OnCardReadyToStart?.Invoke(gameObject);
         }
     }
 
     private void CompleteTask()
     {
-        OnTaskCompleted?.Invoke(gameObject);
+        OnCardAction?.Invoke(gameObject);
         ResetCooldown();
-    }
-
-    private void AttemptToStartTask()
-    {
-        OnAttemptedTaskStart?.Invoke(gameObject);
-    }
-
-    private void InterruptTask()
-    {
-        OnTaskInterrupted?.Invoke(gameObject); // Trigger the interruption event
-        Debug.Log("Task was interrupted due to the card slot being inactive.");
     }
 
     public void ResetCooldown()
     {
-        isTaskReady = false;
+        isTaskReadyToProgress = false;
         taskProgress = 0f;
+        shouldActionTrigger = false;
+    }
+
+    public void SetTaskReady()
+    {
+        isTaskReadyToProgress = true;
+    }
+
+    public void GrantApproval()
+    {
+        shouldActionTrigger = true;
     }
 }

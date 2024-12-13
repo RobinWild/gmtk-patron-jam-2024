@@ -25,7 +25,30 @@ public static class Inventory
         foreach (ResourceType resource in Enum.GetValues(typeof(ResourceType)))
         {
             resources[resource] = 0;
-            maxResources[resource] = int.MaxValue;
+
+            // Set specific default max values for each resource type
+            switch (resource)
+            {
+                case ResourceType.Gold:
+                    maxResources[resource] = 1000;
+                    break;
+                case ResourceType.BuildingMaterials:
+                    maxResources[resource] = 1000;
+                    break;
+                case ResourceType.TradeGoods:
+                    maxResources[resource] = 1000;
+                    break;
+                case ResourceType.Corpses:
+                    maxResources[resource] = 1000;
+                    break;
+                case ResourceType.Military:
+                    maxResources[resource] = 1000;
+                    break;
+                default:
+                    maxResources[resource] = int.MaxValue; // Fallback for any new resource types
+                    break;
+            }
+
             resourceChangeListeners[resource] = null;
             resourcePrefabs[resource] = null; // Initialize with null prefabs
         }
@@ -55,6 +78,11 @@ public static class Inventory
     }
 
     public static int GetResource(ResourceType resource) => resources[resource];
+
+    public static int GetMaxResource(ResourceType resource)
+    {
+        return maxResources[resource];
+    }
 
     public static void SetResource(ResourceType resource, int amount)
     {
