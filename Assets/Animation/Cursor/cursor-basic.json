@@ -1,0 +1,104 @@
+{
+"skeleton": {
+	"hash": "hP2OaMKsp9Q",
+	"spine": "4.2.37",
+	"x": -103.65,
+	"y": -334.12,
+	"width": 348.48,
+	"height": 382.37,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "icon": "ik" },
+	{ "name": "wizardMain", "parent": "root", "length": 207.94, "rotation": -90, "color": "abe323ff" },
+	{
+		"name": "wizardMain2",
+		"parent": "root",
+		"length": 207.94,
+		"rotation": -90,
+		"x": 17.56,
+		"y": -29.85,
+		"color": "abe323ff"
+	}
+],
+"slots": [
+	{ "name": "cursor2", "bone": "wizardMain2", "attachment": "assets/cursor" },
+	{ "name": "cursor", "bone": "wizardMain", "attachment": "assets/cursor" }
+],
+"transform": [
+	{
+		"name": "cursorShadow",
+		"order": 1,
+		"bones": [ "wizardMain2" ],
+		"target": "wizardMain",
+		"x": 24.76,
+		"y": 15.05
+	}
+],
+"physics": [
+	{
+		"name": "wizardMain",
+		"bone": "wizardMain",
+		"rotate": 1,
+		"inertia": 0.2962,
+		"strength": 159.8,
+		"damping": 0.8152,
+		"mass": 2,
+		"gravity": 46.4,
+		"windGlobal": true
+	}
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"cursor": {
+				"assets/cursor": { "x": 130.55, "y": 63.06, "rotation": 115, "width": 235, "height": 285 }
+			},
+			"cursor2": {
+				"assets/cursor": { "color": "0000007b", "x": 130.55, "y": 63.06, "rotation": 115, "width": 235, "height": 285 }
+			}
+		}
+	}
+],
+"events": {
+	"event": {}
+},
+"animations": {
+	"empty": {},
+	"test": {
+		"bones": {
+			"root": {
+				"translate": [
+					{},
+					{ "time": 0.2, "x": -1076.81, "y": -616.67, "curve": "stepped" },
+					{ "time": 1, "x": -1076.81, "y": -616.67 },
+					{ "time": 1.1667, "x": 1544.82, "y": 459.24, "curve": "stepped" },
+					{ "time": 1.8, "x": 1544.82, "y": 459.24 },
+					{ "time": 1.9667, "curve": "stepped" },
+					{ "time": 2.5667 }
+				]
+			}
+		}
+	},
+	"aim/wand": {
+		"drawOrder": [
+			{}
+		]
+	},
+	"base/breathe": {},
+	"base/click": {},
+	"base/clickOff": {},
+	"base/clickOn": {},
+	"base/getHit": {
+		"drawOrder": [
+			{},
+			{ "time": 0.1 }
+		]
+	},
+	"base/invulnerable": {},
+	"base/spell": {},
+	"base/vulnerable": {}
+}
+}

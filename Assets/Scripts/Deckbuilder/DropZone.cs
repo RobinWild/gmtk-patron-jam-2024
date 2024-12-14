@@ -6,35 +6,47 @@ using UnityEngine.Events;
 
 public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
-    [SerializeField] private Vector3 dropOffset;
-    public Vector3 DropPosition => transform.position + dropOffset;
-
-    public Color unselectedColour = Color.grey;
-    public Color highlightedColour = Color.white;
-    public Color selectedColour = Color.yellow;
+    public GameObject dropOffsetObject;
+    public Vector3 dropPosition => dropOffsetObject.transform.position;
 
     public bool scaleDraggables = true;
     public float draggableScale = 1f;
 
-    private Image image;
+    public Draggable child;
 
-    // UnityEvent for OnDrop functionality
-     [System.Serializable] public class DroppedObjectEvent : UnityEvent<GameObject, GameObject> { }
+    public bool singleSlot = true;
+
+    [System.Serializable] public class DroppedObjectEvent : UnityEvent<GameObject, GameObject> { }
     public DroppedObjectEvent OnCardDropped;
+
+    private ArrangeTokens arrangeTokens;
 
     void Start()
     {
-        image = GetComponent<Image>();
+        arrangeTokens = GetComponentInParent<ArrangeTokens>(); // Assuming ArrangeTokens is on the parent object
+    }
+
+    public void OpenSlot()
+    {
+        GetComponent<Image>().raycastTarget = true;
+    }
+
+    public void CloseSlot()
+    {
+        GetComponent<Image>().raycastTarget = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (Draggable.Active != null)
         {
-            if (scaleDraggables) Draggable.Active.transform.DOScale (Vector3.one * draggableScale, 0.2f);
-            
+            if (scaleDraggables)
+            {
+                DOTween.Kill("ScaleTween");
+                Draggable.Active.transform.DOScale(Vector3.one * draggableScale, 0.1f).SetId("ScaleTween");
+            }
+
             Draggable.Active.SetDropZone(this);
-            GetComponent<Image>().DOColor(selectedColour, 0.5f);
         }
     }
 
@@ -43,7 +55,7 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (Draggable.Active != null)
         {
             Draggable.Active.SetDropZone(null);
-            GetComponent<Image>().DOColor(unselectedColour, 0.5f);
+            if (scaleDraggables) Draggable.Active.transform.DOScale(Vector3.one * Draggable.Active.scaleOnPickup, 0.2f).SetId("ScaleTween");
         }
     }
 
@@ -53,18 +65,35 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (droppedObject != null)
         {
-            OnCardDropped?.Invoke(droppedObject, this.gameObject);
+            if (singleSlot) CloseSlot();
+            if (Draggable.Active._drop != null) OnCardDropped?.Invoke(droppedObject, this.gameObject);
         }
 
-        Sequence sequence = DOTween.Sequence();
-        image.DOKill();
-        sequence.Append(image.DOColor(highlightedColour, 0.1f));
-        sequence.Append(image.DOColor(unselectedColour, 1f));
-        sequence.Play();
+        if (droppedObject.GetComponent<Worker>()) droppedObject.GetComponent<Worker>().dropZone = this;
+
+        if (arrangeTokens != null)
+        {
+            arrangeTokens.AddObject(droppedObject.GetComponent<RectTransform>());
+        }
     }
 
-    private void OnDrawGizmosSelected()
+    public void ManuallyDropObject(GameObject objectToDrop)
     {
-        Gizmos.DrawWireCube(transform.position + dropOffset, Vector3.one * 10);
+        if (objectToDrop != null)
+        {
+            if (singleSlot) CloseSlot();
+
+            OnCardDropped?.Invoke(objectToDrop, this.gameObject);
+
+            if (objectToDrop.GetComponent<Worker>())
+            {
+                objectToDrop.GetComponent<Worker>().dropZone = this;
+            }
+
+            if (arrangeTokens != null)
+            {
+                arrangeTokens.AddObject(objectToDrop.GetComponent<RectTransform>());
+            }
+        }
     }
 }

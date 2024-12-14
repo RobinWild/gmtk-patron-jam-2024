@@ -1,6 +1,6 @@
 card.png
-size:256,512
+size:256,256
 filter:Linear,Linear
 pma:true
-assets/card
-bounds:2,2,218,267
+assets/token
+bounds:6,6,151,151

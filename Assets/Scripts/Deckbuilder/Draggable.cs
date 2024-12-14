@@ -13,9 +13,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Vector3 _startPosition;
     private RectTransform _rect;
 
-    public GraphicRaycaster nonDropzoneRaycaster;
     private Canvas _canvas;
     private int _originalSortingOrder;
+
+    public float baseScale = 0.5f;
+    public float scaleOnPickup = 1.4f;
+    public float scaleOnHover = 1.1f;
 
     private void Start()
     {
@@ -37,6 +40,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         // Add this object to the global list of draggables
         allDraggables.Add(this);
+
+        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
     }
 
     private void OnDestroy()
@@ -52,13 +57,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        CheckForDropZone(eventData);
         Active = this;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         _startPosition = _rect.position;
         _canvas.overrideSorting = true;
         _originalSortingOrder = _canvas.sortingOrder;
         _canvas.sortingOrder = 100;
-        _rect.transform.DORotate(Vector3.zero, 0.2f);
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * scaleOnPickup, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
 
         // Disable raycast blocking for all other draggables
         foreach (var draggable in allDraggables)
@@ -66,6 +73,29 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             if (draggable != this)
             {
                 draggable.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+        }
+    }
+
+    public void CheckForDropZone(PointerEventData eventData)
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = eventData.position
+        };
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+
+        foreach (var result in raycastResults)
+        {
+            // Check if the raycast hit a DropZone object
+            DropZone dropZone = result.gameObject.GetComponent<DropZone>();
+            if (dropZone != null)
+            {
+                // Assign the first valid DropZone to the _drop variable
+                _drop = dropZone;
+                break;
             }
         }
     }
@@ -92,10 +122,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             ResetPosition();
         }
 
-        _canvas.overrideSorting = false;
         _canvas.sortingOrder = _originalSortingOrder;
         Active = null;
-        _rect.DOScale(Vector3.one * 1f, 0.25f).SetEase(Ease.OutBack);
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
 
         // Re-enable raycast blocking for all other draggables
         foreach (var draggable in allDraggables)
@@ -109,14 +139,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _rect.DOScale(Vector3.one * 1.1f, 0.25f).SetEase(Ease.OutBack);
+        DOTween.Kill("ScaleTween" + GetInstanceID());
+        _rect.DOScale(Vector3.one * scaleOnHover, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (Active != this)
         {
-            _rect.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
+            DOTween.Kill("ScaleTween" + GetInstanceID());
+            _rect.DOScale(Vector3.one * baseScale, 0.25f).SetEase(Ease.OutBack).SetId("ScaleTween" + GetInstanceID());
         }
     }
 
