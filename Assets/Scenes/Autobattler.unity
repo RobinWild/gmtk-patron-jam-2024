@@ -170,7 +170,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 3840, y: 2160}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -373,12 +373,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 496038390971005305, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2245283178397303163, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2245283178397303163, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7851817556891727967, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851817556891727967, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9179592655307856447, guid: 5e424d305b4b49e4987f25d78b7fd945, type: 3}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DestroyWithParticleSystems : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class DestroyWithParticleSystems : MonoBehaviour
             
             particleSystem.Stop();
             
+            transform.DOKill();
             Destroy(gameObject, particleSystem.main.startLifetimeMultiplier);
             Destroy(particleSystem.gameObject, particleSystem.main.startLifetimeMultiplier);
         } else {
             Debug.Log("No particle system assigned - destroying object");
+            transform.DOKill();
             Destroy(gameObject);
         }
     }
