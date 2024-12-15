@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      icon-military_0: 6869070451092439142
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

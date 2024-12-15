@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      icon-building-materials_0: 3491821751301594734
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
