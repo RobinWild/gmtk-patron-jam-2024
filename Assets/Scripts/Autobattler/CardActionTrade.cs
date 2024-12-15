@@ -87,6 +87,14 @@ public class CardActionTrade : MonoBehaviour
 
         GameObject resourceInstance = Instantiate(resourcePrefab, targetObject.transform);
 
+        float randomZ = Random.Range(0f, 360f);
+        resourceInstance.transform.rotation = Quaternion.Euler(0f, 0f, randomZ);
+        float randomZRotation = Random.Range(-360f, 360f);
+        resourceInstance.transform.DORotate(
+            resourceInstance.transform.eulerAngles + new Vector3(0f, 0f, randomZRotation * 3),
+            3f,
+            RotateMode.FastBeyond360
+        );
         resourceInstance.transform.position = startTransform.position;
         resourceInstance.transform.localScale = Vector3.one;
 

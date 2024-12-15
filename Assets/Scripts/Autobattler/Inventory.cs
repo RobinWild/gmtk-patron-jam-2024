@@ -8,9 +8,9 @@ public static class Inventory
     {
         Gold,
         BuildingMaterials,
-        TradeGoods,
-        Corpses,
-        Military
+        Food,
+        Military,
+        Happiness
     }
 
     private static readonly Dictionary<ResourceType, int> resources = new Dictionary<ResourceType, int>();
@@ -35,13 +35,13 @@ public static class Inventory
                 case ResourceType.BuildingMaterials:
                     maxResources[resource] = 1000;
                     break;
-                case ResourceType.TradeGoods:
-                    maxResources[resource] = 1000;
-                    break;
-                case ResourceType.Corpses:
+                case ResourceType.Food:
                     maxResources[resource] = 1000;
                     break;
                 case ResourceType.Military:
+                    maxResources[resource] = 1000;
+                    break;
+                case ResourceType.Happiness:
                     maxResources[resource] = 1000;
                     break;
                 default:

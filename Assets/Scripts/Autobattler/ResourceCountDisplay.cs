@@ -16,6 +16,6 @@ public class ResourceCountDisplay : MonoBehaviour
     private void UpdateResourceText()
     {
         int resourceCount = Inventory.GetResource(resourceType);
-        resourceText.text = $"{resourceType}: {resourceCount}";
+        resourceText.text = $"{resourceCount}";
     }
 }
