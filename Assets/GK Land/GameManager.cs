@@ -7,6 +7,14 @@ public class GameManager : MonoBehaviour
     // todo: requests, card gen
 
     public Transform counters;
+    public GKcard cardPrefab;
+    public RectTransform canvasRoot;
+    public RectTransform incomingParticleTarget;
+    public RectTransform outgoingParticleTarget;
+
+    public string[] prefabKeys = new string[]{};
+    public GameObject[] resourcePrefabs = new GameObject[]{};
+    public Dictionary<string, GameObject> prefabDict = new();
 
     public static GameManager instance;
 
@@ -15,6 +23,9 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         foreach(var key in new string[]{"gold", "wood", "food", "military", "reputation", "revolution"}) SetResourceAmount(key, 0);
+
+        for (int i = 0; i < prefabKeys.Length; i++)
+            prefabDict[ prefabKeys[i] ] = resourcePrefabs[i];
     }
 
     void Start(){

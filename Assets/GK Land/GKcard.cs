@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -7,13 +6,13 @@ using UnityEngine.EventSystems;
 
 public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    // todo: deactivation visuals
     public RectTransform fill;
     public GameObject discardVisual;
+    public GameObject deactivatedVisual;
 
-    [NonSerialized]
+    [System.NonSerialized]
     public GKslots slots;
-    [NonSerialized]
+    [System.NonSerialized]
     public int slotIndex;
 
     List<CardEffect> effects = new();
@@ -22,44 +21,21 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     float procTime => effects.Aggregate(1f, (res, ce) => res * ce.time_mult);
     
     bool active = true;
-    bool deactivatable => effects.All(ce => ce.deactivatable);
-    bool discardable => effects.All(ce => ce.discardable);
-    bool movable => effects.All(ce => ce.movable);
-
-    public abstract class CardEffect {
-        public GKcard card;
-        public float time_mult = 1f;
-        public bool movable = true;
-        public bool discardable = true;
-        public bool deactivatable = true;
-
-        public virtual void Register(){}
-        public virtual void DeRegister(){}
-
-        public virtual bool Condition() => true;
-        public virtual void Progress(float t){}
-        public virtual void Proc(){}
-    }
-
-    class TestEffect : CardEffect {
-        public override void Proc(){
-            Debug.Log("proc");
-            GameManager.AddResourceAmount("gold", 5);
-        }
-
-        public TestEffect(){
-            time_mult = 0.5f;
-        }
-    }
+    bool discarded = false;
+    bool deactivatable => effects.All(ce => ce.deactivatable) && !discarded;
+    bool discardable => effects.All(ce => ce.discardable) && !discarded;
+    bool movable => effects.All(ce => ce.movable) && !discarded;
 
     void Start(){
-        RegisterEffect(new TestEffect());
+        transform.localScale = Vector3.zero;
+        TweenScale(1);
     }
 
     void Update(){
         if(
             GameTimeController.DeltaTime == 0 ||
-            !effects.All(ce => ce.Condition())
+            !effects.All(ce => ce.Condition()) ||
+            discarded
         ) return;
 
         procProg += GameTimeController.DeltaTime;
@@ -77,10 +53,11 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     Tween posTween;
 
-    public void ConformToSlotPosition(){
+    public void ConformToSlotPosition(bool instant = false){
         var correctPos = new Vector3(slots.GetSlotPosition(slotIndex),0,0);
 
-        if(transform.localPosition != correctPos){
+        if(instant) transform.localPosition = correctPos;
+        else if(transform.localPosition != correctPos){
             posTween?.Kill();
             posTween = transform.DOLocalMove(correctPos, 0.2f);
         }
@@ -89,6 +66,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     void SetActive(bool to){
         if(!deactivatable && !to) return;
         active = to;
+        deactivatedVisual.SetActive(!active);
     }
 
     void setFill(float val){
@@ -96,6 +74,20 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         var o = fill.offsetMax;
         o.y = (fill.parent as RectTransform).sizeDelta.y * -val;
         fill.offsetMax = o;
+    }
+    
+    public void GainResources(string key, int amount){
+        GameManager.AddResourceAmount(key, amount);
+
+        for (int i = 0; i < amount; i++)
+            SpawnBespokeParticle(key, transform.position, GameManager.instance.incomingParticleTarget.position, 1, i);
+    }
+
+    public void SpendResources(string key, int amount){
+        GameManager.AddResourceAmount(key, -amount);
+        
+        for (int i = 0; i < amount; i++)
+            SpawnBespokeParticle(key, GameManager.instance.outgoingParticleTarget.position, transform.position, -0.5f, i);
     }
 
     public void RegisterEffect(CardEffect effect){
@@ -133,9 +125,11 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             ConformToSlotPosition();
             return;
         }
-        foreach(var ce in effects) DeRegisterEffect(ce, false);
+
+        discarded = true;
         slots.SetSlot(slotIndex, null);
-        Destroy(gameObject);
+        foreach(var ce in effects) DeRegisterEffect(ce, false);
+        transform.DOScale(0, 0.25f).OnComplete(() => Destroy(gameObject));
     }
 
     #endregion
@@ -177,6 +171,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         else {
             slots.MoveSlot(slotIndex, i);
             ConformToSlotPosition();
+            TweenScale(1.1f);
         }
     }
     public void OnPointerEnter(PointerEventData e){
@@ -190,8 +185,71 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     void TweenScale(float s){
         scaleTween?.Kill();
+        if(discarded) return;
         scaleTween = transform.DOScale(s, 0.1f);
     }
 
     #endregion
+
+
+    #region Resource Particles
+
+    private void SpawnBespokeParticle(string key, Vector3 startPos, Vector3 endPos, float arcScalar, int iteration)
+    {
+        if(!GameManager.instance.prefabDict.ContainsKey(key)) return;
+
+        GameObject particle = Instantiate(GameManager.instance.prefabDict[key], GameManager.instance.canvasRoot);
+        var ptransform = particle.transform;
+
+        ptransform.position = startPos;
+        ptransform.localScale = Vector3.one;
+        ptransform.eulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
+
+        float moveDuration = 0.5f * (1 + Mathf.Exp(-iteration / 5f));
+        float arcHeight = 3f;
+        float arcVariance = 0.5f;
+
+        var movexTween = ptransform.DOMoveX(endPos.x, moveDuration).SetEase(Ease.Linear);
+        var rotateTween = ptransform.DORotate(
+            ptransform.eulerAngles + new Vector3(0f, 0f, Random.Range(-1f, 1f) * 1080),
+            3f,
+            RotateMode.FastBeyond360
+        );
+
+        DOTween.Sequence()
+            .Join(
+                ptransform.DOMoveY(
+                    endPos.y + Random.Range(arcHeight - arcVariance, arcHeight + arcVariance) * arcScalar,
+                    moveDuration / 2
+                ).SetEase(Ease.OutSine)
+            )
+            .Append(
+                ptransform.DOMoveY(endPos.y, moveDuration / 2).SetEase(Ease.InSine)
+            )
+            .OnComplete(
+                () => {
+                    Destroy(particle);
+                    // prevent the console from filling with warnings/errors
+                    movexTween.Kill();
+                    rotateTween.Kill();
+                }
+            );
+    }
+
+    #endregion
+}
+
+public abstract class CardEffect {
+    public GKcard card;
+    public float time_mult = 1f;
+    public bool movable = true;
+    public bool discardable = true;
+    public bool deactivatable = true;
+
+    public virtual void Register(){}
+    public virtual void DeRegister(){}
+
+    public virtual bool Condition() => true;
+    public virtual void Progress(float t){}
+    public virtual void Proc(){}
 }
