@@ -35,8 +35,6 @@ public class GKslots : MonoBehaviour
 
         if(at == -1) return null;
 
-        Debug.Log(at);
-
         var card = Instantiate(GameManager.instance.cardPrefab, transform);
         SetSlot(at, card);
 

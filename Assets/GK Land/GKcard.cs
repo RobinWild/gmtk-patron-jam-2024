@@ -41,15 +41,16 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             discarded
         ) return;
 
-        procProg += GameTimeController.DeltaTime;
-        setFill(procProg / procTime);
-        foreach(var ce in effects) ce.Progress(procProg / procTime);
-
         if(procProg > procTime){
             procProg = 0;
-            setFill(0);
             foreach(var ce in effects) ce.Proc();
         }
+        else {
+            procProg += GameTimeController.DeltaTime;
+            foreach(var ce in effects) ce.Progress(procProg / procTime);
+        }
+        
+        setFill(procProg / procTime);
     }
 
 
