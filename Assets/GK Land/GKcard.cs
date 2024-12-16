@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,31 +17,58 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     float procTime = 2f;
     float procProg = 0f;
-    public event Action proc;
 
-    void Update(){
-        if (GameTimeController.DeltaTime == 0 || !active) return;
-        procProg += GameTimeController.DeltaTime;
-        setFill(procProg / procTime);
-        if(procProg > procTime){
-            procProg = 0;
-            proc?.Invoke();
+    List<CardEffect> effects = new();
+
+    public abstract class CardEffect {
+        public GKcard card;
+
+        public virtual void Register(){}
+        public virtual void DeRegister(){}
+
+        public virtual bool Condition() => true;
+        public virtual void Progress(float t){}
+        public virtual void Proc(){}
+    }
+
+    class TestEffect : CardEffect {
+        public override void Proc(){
+            Debug.Log("proc");
         }
     }
+
+    void Start(){
+        RegisterEffect(new TestEffect());
+    }
+
+    void Update(){
+        if(
+            GameTimeController.DeltaTime == 0 ||
+            !effects.All(ce => ce.Condition()) ||
+            !active
+        ) return;
+
+        procProg += GameTimeController.DeltaTime;
+        setFill(procProg / procTime);
+        foreach(var ce in effects) ce.Progress(procProg / procTime);
+
+        if(procProg > procTime){
+            procProg = 0;
+            foreach(var ce in effects) ce.Proc();
+        }
+    }
+
 
     #region APIs
 
     Tween posTween;
 
     public void ConformToSlotPosition(){
-        if(posTween != null) posTween.Kill();
-
         var correctPos = new Vector3(slots.GetSlotPosition(slotIndex),0,0);
+
         if(transform.localPosition != correctPos){
-            TweenScale(1f);
-            var img = GetComponent<Image>();
-            img.raycastTarget = false;
-            posTween = transform.DOLocalMove(correctPos, 0.2f).OnComplete(() => img.raycastTarget = true);
+            posTween?.Kill();
+            posTween = transform.DOLocalMove(correctPos, 0.2f);
         }
     }
 
@@ -55,7 +84,36 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         fill.offsetMax = o;
     }
 
+    public void RegisterEffect(CardEffect effect){
+        if(effects.Contains(effect)){
+            Debug.LogWarning("Effect already registered on this card");
+            return;
+        }
+        if(effect.card != null){
+            Debug.LogWarning("Effect already registered on another card");
+            return;
+        }
+        effect.card = this;
+        effect.Register();
+        effects.Add(effect);
+    }
+
+    public void DeRegisterEffect(CardEffect effect){
+        if(effect.card == null){
+            Debug.LogWarning("Effect already deregistered");
+            return;
+        }
+        else if(effect.card != this){
+            Debug.LogWarning("Effect registered on another card, cannot be deregistered from this one");
+            return;
+        }
+        effect.DeRegister();
+        effect.card = null;
+        effects.Remove(effect);
+    }
+
     #endregion
+
 
     #region Mouse Handling
 
@@ -70,6 +128,8 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         transform.SetAsLastSibling();
         dragStartPos = transform.position;
         mouseDragStartPos = e.pointerCurrentRaycast.worldPosition;
+
+        posTween?.Kill();
         TweenScale(1.3f);
     }
     public void OnDrag(PointerEventData e){
@@ -87,7 +147,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     void TweenScale(float s){
-        if(scaleTween != null) scaleTween.Kill();
+        scaleTween?.Kill();
         scaleTween = transform.DOScale(s, 0.1f);
     }
 
