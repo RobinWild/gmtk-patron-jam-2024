@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GKslots : MonoBehaviour
 {
-    const int NUM_SLOTS = 8;
+    public const int NUM_SLOTS = 8;
     const float CARD_WIDTH = 139;
     const float BASE_OFFSET = -((CARD_WIDTH * (NUM_SLOTS/2)) - CARD_WIDTH/2);
 
