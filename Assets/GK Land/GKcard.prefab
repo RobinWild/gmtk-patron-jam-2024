@@ -421,6 +421,7 @@ MonoBehaviour:
   fill: {fileID: 1196203735547535670}
   discardVisual: {fileID: 7365146484884568367}
   deactivatedVisual: {fileID: 3004736628512172382}
+  textComponent: {fileID: 5722683324754246956}
 --- !u!1 &6026417248504894434
 GameObject:
   m_ObjectHideFlags: 0

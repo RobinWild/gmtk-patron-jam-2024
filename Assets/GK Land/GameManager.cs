@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // todo: requests, card gen
+    // todo: requests
 
-    public Transform counters;
+    public GKslots slots;
     public GKcard cardPrefab;
+    public Transform counters;
+    
     public RectTransform canvasRoot;
     public RectTransform incomingParticleTarget;
     public RectTransform outgoingParticleTarget;
@@ -19,13 +22,21 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     void Awake(){
-        if(instance != null) Debug.LogError("uh oh");
         instance = this;
 
         foreach(var key in new string[]{"gold", "wood", "food", "military", "reputation", "revolution"}) SetResourceAmount(key, 0);
+        SetResourceAmount("reputation", 1000);
 
         for (int i = 0; i < prefabKeys.Length; i++)
             prefabDict[ prefabKeys[i] ] = resourcePrefabs[i];
+
+        DOTween.Sequence()
+            .AppendInterval(1f)
+            .AppendCallback(CardGenerator.Taxation)
+            .AppendInterval(1f)
+            .AppendCallback(CardGenerator.WoodSlaves)
+            .AppendInterval(1f)
+            .AppendCallback(CardGenerator.WoodImport);
     }
 
     void Start(){
@@ -35,8 +46,7 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    void Update()
-    {
+    void Update(){
         GameTimeController.Update(Time.deltaTime);
     }
 
@@ -47,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public static int GetResourceAmount(string key) => inventoryData[key];
     public static void SetResourceAmount(string key, int amount){
-        inventoryData[key] = Mathf.Max(0, amount);
+        inventoryData[key] = Mathf.Clamp(amount, 0, 1000);
         inventoryChange?.Invoke(key, amount);
     }
     public static void AddResourceAmount(string key, int amount) => SetResourceAmount(key, GetResourceAmount(key) + amount);

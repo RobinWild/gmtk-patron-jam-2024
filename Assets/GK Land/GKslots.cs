@@ -24,6 +24,25 @@ public class GKslots : MonoBehaviour
             if(c != null) c.ConformToSlotPosition();
     }
 
+    public GKcard NewCard(){
+        int at = -1;
+        int i;
+
+        for(i = 0; i < NUM_SLOTS; i++) if(EmptySlot(i)){
+            at = i;
+            break;
+        }
+
+        if(at == -1) return null;
+
+        Debug.Log(at);
+
+        var card = Instantiate(GameManager.instance.cardPrefab, transform);
+        SetSlot(at, card);
+
+        return card;
+    }
+
     public bool EmptySlot(int index) => cards[index] == null;
 
     public void SetSlot(int index, GKcard card){

@@ -9,6 +9,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public RectTransform fill;
     public GameObject discardVisual;
     public GameObject deactivatedVisual;
+    public TMPro.TMP_Text textComponent;
 
     [System.NonSerialized]
     public GKslots slots;
@@ -27,6 +28,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     bool movable => effects.All(ce => ce.movable) && !discarded;
 
     void Start(){
+        ConformToSlotPosition(true);
         transform.localScale = Vector3.zero;
         TweenScale(1);
     }
@@ -35,6 +37,7 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         if(
             GameTimeController.DeltaTime == 0 ||
             !effects.All(ce => ce.Condition()) ||
+            !active ||
             discarded
         ) return;
 
@@ -44,7 +47,8 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
         if(procProg > procTime){
             procProg = 0;
-            if(active) foreach(var ce in effects) ce.Proc();
+            setFill(0);
+            foreach(var ce in effects) ce.Proc();
         }
     }
 
@@ -88,6 +92,10 @@ public class GKcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         
         for (int i = 0; i < amount; i++)
             SpawnBespokeParticle(key, GameManager.instance.outgoingParticleTarget.position, transform.position, -0.5f, i);
+    }
+
+    public void RegisterEffects(params CardEffect[] toRegister){
+        foreach(var ce in toRegister) RegisterEffect(ce);
     }
 
     public void RegisterEffect(CardEffect effect){
